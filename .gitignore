@@ -1,0 +1,17 @@
+﻿# Ignore Visual Studio temporary files
+.vs/
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore node modules (if using npm)
+node_modules/
+
+# Ignore logs and temp files
+*.log
+*.tmp

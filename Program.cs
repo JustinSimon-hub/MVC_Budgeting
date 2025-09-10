@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TutorialWindowsMVC.Data;
+using TutorialWindowsMVC.Data.Services;
 
 namespace TutorialWindowsMVC
 {
@@ -13,8 +14,8 @@ namespace TutorialWindowsMVC
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<FinanceAppContext>(options => 
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
-
-
+            //One instance per request 
+            builder.Services.AddScoped<IExpensesService, ExpensesService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -31,7 +32,7 @@ namespace TutorialWindowsMVC
             app.UseRouting();
 
             app.UseAuthorization();
-
+            //This is the route specified for the program
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
